@@ -9,3 +9,16 @@ services:
     env_file:
       - docker/.env
 
+  db:
+    container_name: db
+    image: mysql:5.7
+    restart: always
+    env_file:
+      - docker/.env
+#    volumes:
+      #- db-data:/var/lib/postgresql/data:rw
+      # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
+#      - ./docker/db/data:/var/lib/mysql:rw
+#      - ./docker/db/init:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
